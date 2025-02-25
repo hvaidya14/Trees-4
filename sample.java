@@ -128,3 +128,43 @@ class Solution {
         return false;
     }
 }
+
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    int cnt=0;        
+    int answer = -1;
+    public int kthSmallest(TreeNode root, int k) {
+
+        TreeNode curr=inorder(root, k);
+        return answer;
+    }
+
+    private TreeNode inorder(TreeNode root, int k) {
+        if (root == null) {
+            return root;
+        }
+        inorder(root.left,k);
+        cnt++;
+        if (cnt == k) {
+            answer = root.val;
+        }
+        inorder(root.right,k);
+        return root;
+    }
+}
